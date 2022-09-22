@@ -1,3 +1,5 @@
+Studies for Vue-anki
+
 # vue_first
 
 ## Project setup
