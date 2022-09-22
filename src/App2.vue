@@ -1,27 +1,16 @@
-<!--2, two strings in headers, blue and red, without counters, reverse and join-->
+<!--2, exemplary simple binding-->
 <template>
-  <h1 :class="blue">{{ firstName.split('').reverse().join('')}}</h1>
-  <h2 :class="red">{{ secondName + 1 }}</h2>
+  <h1>The message is {{ message }}</h1>
+  <h1>The counter is {{ counter + 1 }}</h1>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      firstName: 'Hippo',
-      secondName: 0,
-      blue: 'blue',
-      red: 'red'
+      message: "Hippopotamus",
+      counter: 1
     }
   }
 }
 </script>
-
-<style>
-  .red {
-    color: red
-  }
-  .blue {
-    color: blue
-  }
-</style>
