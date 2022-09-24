@@ -1,23 +1,20 @@
-<!--5, two-way binding with full and short syntax -->
+<!--6, if-else toggle -->
 <template>
-  <input v-bind:value="msg" v-on:input="onInput" placeholder="Enter text">
-  <p>{{msg}}</p>
-  <input :value="msg" @input="onInput" placeholder="Enter text">
-  <p>{{msg}}</p>
-  <input v-model="msg" placeholder="Enter text">
-  <p>{{msg}}</p>
+  <h1 v-if='awesome'>The Vue is awesome</h1>
+  <h1 v-else>Oh no</h1>
+  <button @click="toggle">Toggle</button>
 </template>
 
 <script>
 export default{
   data(){
     return {
-      msg: ""
+      awesome: true
     }
   },
   methods: {
-    onInput(e){
-      this.msg = e.target.value
+    toggle(){
+      this.awesome = !this.awesome
     }
   }
 }
