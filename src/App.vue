@@ -1,21 +1,36 @@
-<!--6, if-else toggle -->
 <template>
-  <h1 v-if="fat">Hippos are fat</h1>
-  <h1 v-else>Oh no</h1>
-  <button @click="toggle">Toggle</button>
+  <form @submit.prevent="addTodo">
+    <input v-model="newTodo">
+    <button>Add todo</button>
+  </form>
+  <ul>
+    <li v-for="todo in todos" :key="todo.id">
+      {{todo.value}}
+      <button @click="removeTodo(todo)">X</button>
+    </li>
+  </ul>
 </template>
 
 <script>
-export default {
-  data(){
-    return {
-      fat: true
-    }
-  },
-  methods : {
-    toggle(){
-      this.fat = !this.fat
-    }
-  }
-}
+ let id = 0
+ export default {
+   data(){
+     return {
+       newTodo: '',
+       todos: [
+         {id: id++, value: "Hippos"},
+         {id: id++, value: "Potamuses"},
+         {id: id++, value: "Elephants"}
+       ]
+     }
+   },
+   methods: {
+     addTodo(){
+       this.todos.push({id: id++, value: this.newTodo})
+     },
+     removeTodo(todo){
+       this.todos = this.todos.filter(o => o !== todo)
+     }
+   }
+ }
 </script>
