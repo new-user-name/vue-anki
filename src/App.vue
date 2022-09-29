@@ -1,43 +1,17 @@
-<!--10 async request and watchers-->
-
 <template>
-  <p>Todo id {{ todoId }}</p>
-  <button @click="todoId++">Fetch next todo</button>
-  <p v-if="!todoData">Loading...</p>
-  <pre v-else>{{ todoData }}</pre>
-
+  <AppThirteen @response = "msg => childMessage = msg"/>
+  <p>Message from child {{childMessage}}</p>
 </template>
 
 <script>
+import AppThirteen from "@/AppThirteen";
+
 export default {
-  data() {
+  components: {AppThirteen},
+  data(){
     return {
-      todoId: 1,
-      todoData: null
-    }
-  },
-
-  mounted() {
-    this.fetchData()
-  },
-
-  watch: {
-    todoId() {
-      this.fetchData()
-    }
-  },
-
-  methods: {
-    async fetchData() {
-      this.todoData = null
-      const res = await fetch(
-          `https://jsonplaceholder.typicode.com/todos/${this.todoId}`
-      )
-      this.todoData = await res.json()
+      childMessage: 'No child message yet'
     }
   }
-
 }
 </script>
-
-
